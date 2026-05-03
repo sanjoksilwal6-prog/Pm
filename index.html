@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Computers Networking </title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Times New Roman";
+  background: #3b4a6b; 
+  color: white;
+ background-image:url('pe.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #0b1d3d;
+            color: white;
+            margin: 0;
+            font-family: Times New Roman;
+        }
+
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Rotating Globe */
+.globe {
+  font-size: 60px;
+  display: inline-block;
+  animation: spin 12s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+header h1 {
+  font-size: 50px;
+  margin: 10px 0;
+}
+header h3 {
+  font-size: 20px;
+  color: #3a00cc;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+nav div {
+  padding: 22px;
+  width: 220px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  transition: 0.3s;
+}
+
+/* Navigation colors */
+nav div:nth-child(1) { background: #ff6b6b; }
+nav div:nth-child(2) { background: #4ecdc4; }
+nav div:nth-child(3) { background: #ffa502; }
+nav div:nth-child(4) { background: #1e90ff; }
+nav div:nth-child(5) { background: #2ed573; }
+nav div:nth-child(6) { background: #e84393; }
+nav div:nth-child(7) { background: #ff9f43; }
+nav div:hover { transform: scale(1.08); }
+
+/* PAGES */
+section {
+  display: none;
+  padding: 30px;
+}
+.active { display: block; }
+
+.pageTitle {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.back {
+  background:Orange;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* COMBINED CONTENT AREA */
+.content {
+  color: #0f172a;
+  padding: 40px;
+  border-radius: 12px;
+  min-height: 600px;
+  width: 90%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.7;
+  overflow: auto;
+}
+
+#intro .content {
+  background-color: #e0f7fa; /* Light Blue */
+}
+#remote .content {
+  background-color:#e0f7fa; /* Light Blue */
+}
+
+#protocols .content {
+  background-color: #FDFBF4; /* Light Blue */
+}
+
+#social  .content {
+  background-color:#F5E8D8; /* Light Blue */
+}
+#zoom .content {
+  background-color:#D9E9CF; /* Light Blue */
+}
+
+/* Exception: Keeps the Members section white */
+#members .content {
+  background: white !important;
+  border: 1px solid #ddd;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 15px 0;
+  display: block;
+  border: 2px solid #94a3b8;
+}
+
+.content h2, .content h3 { 
+  color: #1e1b4b; 
+  border-bottom: 2px solid #1e1b4b;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+.content ul { 
+  margin-left: 20px; 
+}
+
+
+/* ADD THIS NEW CSS BELOW */
+.members-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.member-box{
+width:150px;
+height:180px;
+border-radius:12px;
+padding:10px;
+text-align:center;
+color:white;
+}
+
+.member-box img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:8px;
+}
+
+.member-box h3{
+margin:5px 0;
+font-size:16px;
+}
+
+.header {
+  padding: 40px;
+  text-align: center;
+}
+
+.header h1 {
+  color: white;          /* main heading in white */
+  margin: 0;
+  font-size:45px;
+}
+
+.header h3{
+  color: white;          /* subheading in white */
+  margin: 40px 0 0;
+  font-size:25px;
+  font-family: Arial, sans-serif;  /* font style */
+}
+
+  
+
+</style>
+
+<script>
+function showPage(id) {
+  let pages = document.querySelectorAll("section");
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function previewImage(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = input.parentElement.querySelector('.preview');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      input.remove(); // remove file input once image is loaded
+    }
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
+</head>
+<body>
+
+<!-- Header Section -->
+<header class="header">
+  <h1>Computer Networking </h1>
+  <h3> Basics And Concepts </h3> 
+
+
+
+</header>
+
+
+<!-- HOME PAGE -->
+<section id="home" class="active">
+  <nav>
+    <div onclick="showPage('intro')">Telecommunication And Media</div>
+    <div onclick="showPage('remote')">Connector And Networking Devices</div>
+    <div onclick="showPage('protocols')">Topologies And Networks</div>
+    <div onclick="showPage('social')">Network Architecture And IP Addressing</div>
+    <div onclick="showPage('zoom')">Intranet,Internet,Extranet</div>
+    <div onclick="showPage('members')">Members</div>
+  </nav>
+</section>
+
+<!-- INTRODUCTION -->
+<section id="intro">
+  <button class="back" onclick="showPage('home')">⬅Back</button>
+  <h2 class="pageTitle">Introduction</h2>
+  <div class="content">
+     </div>
+</section>
+
+<!-- REMOTE LOGIN -->
+<section id="remote">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Connectors And Devices</h2>
+  <div class="content">
+  
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section id="protocols">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Topologies</h2>
+  <div class="content">
+    </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="social">
+<button class="back" onclick="showPage('home')">⬅ Back</button>
+<h2 class="pageTitle">Architecture And IP Addressing</h2>
+
+
+
+<div class="content">
+
+    </div>
+</section>
+
+<!-- ZOOM & BLOGS -->
+<section id="zoom">
+  <button class="back" onclick="showPage('home')">⬅ Back</button>
+  <h2 class="pageTitle">Internet,Intranet,Extranet</h2>
+  <div class="content">
+
+</div>
+</section>
+
+
+<section id="members">
+<button class="back" onclick="showPage('home')">⬅ Back</button>
+<h2 class="pageTitle">Members</h2>
+
+<div class="members-container">
+
+<div class="member-box" style="background:#ff6b6b;">
+<img src="grp/sa.png">
+<h3>Sanjok Silwal (C) </h3>
+</div>
+
+<div class="member-box" style="background:#4ecdc4;">
+<img src="grp/kap.png">
+<h3>Kalpit Pandey </h3>
+</div>
+
+<div class="member-box" style="background:#ffa502;">
+<img src="grp/an.png">
+<h3>Ankit Raj Pathak</h3>
+</div>
+
+<div class="member-box" style="background:#1e90ff;">
+<img src="grp/ab.png">
+<h3>Abhilekh Adhikari</h3>
+</div>
+
+<div class="member-box" style="background:#2ed573;">
+<img src="grp/pab.png">
+<h3>Pabit Regmi</h3>
+</div>
+
+</div>
+</section>
+</body>
+</html> 
